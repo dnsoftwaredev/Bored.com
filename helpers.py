@@ -5,17 +5,11 @@ import urllib.parse
 from flask import redirect, render_template, request, session
 from functools import wraps
 
-# just basically a function that return an url with top and bottom code according
-# to what the user input in UNDERSTOOD
+# error reporting
 def apology(message, code=400):
-    """Render an error message to the user."""
     def escape(s):
-        """
-        Escape special characters. This basically mean to just convert special character
-        to things that the website memegen.link can understand and make a meme img.
 
-        https://github.com/jacebrowning/memegen#special-characters
-        """
+        """ https://github.com/jacebrowning/memegen#special-characters"""
         for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
                          ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
             s = s.replace(old, new)
@@ -24,12 +18,7 @@ def apology(message, code=400):
 
 
 def login_required(f):
-    """
-    Decorate routes to require login. This is basically magic. If you are willing to learn more
-    head to the website below, else be ready for a pretty bad mind fuck.
-
-    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
-    """
+    # decorated function for login fucntion
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("user_id") is None:
@@ -39,8 +28,7 @@ def login_required(f):
 
 
 def activity_nop(number_of_people):
-    """ Look up an activity based on # of participant
-    """
+    """ Look up an activity based on # of participant"""
 
     # contact the bored API and get the number of people
     try:
@@ -63,7 +51,6 @@ def activity_nop(number_of_people):
     except (KeyError, TypeError, ValueError):
         return None
 
-# just leave this here for now. maynot have any use
 def usd(value):
     """Format value as USD."""
     return f"${value:,.2f}"
