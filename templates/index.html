@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <main>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Activity</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Participants</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Accessibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in activity_rows %}
+                    <tr>
+                        <td>{{ row.activity }}</td>
+                        <td>{{ row.type }}</td>
+                        <td>{{ row.participants }}</td>
+                        <td>{{ row.price }}</td>
+                        <td>{{ row.accessibility }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

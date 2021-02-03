@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post" id="myForm">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" id="username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+         <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Re-Input Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit" if="submit">Register</button>
+    </form>
+    <script> /* this script basically prevent the user to use a username that is already taken */
+        document.getElementById("myForm").addEventListener("submit", function(event){
+            event.preventDefault()
+            var username=document.getElementById('username').value;
+            $.get('/check?username=' + encodeURIComponent(username), function(data){
+                        if(data == false) {
+                            alert("Username taken.");
+                        }
+                        else {
+                            $('#myForm').submit();
+                        }
+            });
+        });
+    </script>
+{% endblock %}

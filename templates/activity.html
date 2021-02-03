@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Activity
+{% endblock %}
+
+{% block main %}
+<form action="/activity" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="number_of_participants" placeholder="How many participants?" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Give me an activity!</button>
+</form>
+{% endblock %}
