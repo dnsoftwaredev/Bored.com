@@ -15,7 +15,7 @@ from flask.json import jsonify
 app = Flask(__name__)
 
 # track change in real time
-# app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
 # Ensure responses aren't cached => this means that you will actually see the newest
@@ -42,7 +42,7 @@ Session(app)
 
 
 # just use whatever from CS50, it just make sense
-db = SQL("sqlite:///bored.db")
+db = SQL(os.getenv("postgres://xdmsqgpufqndoe:5a1254c174b8ad77edf22fd07a311816920c8be6ebec4141ec5e9ec576a63898@ec2-18-235-107-171.compute-1.amazonaws.com:5432/db73t4urbqrdke"))
 
 @app.route("/")
 @login_required
