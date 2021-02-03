@@ -35,14 +35,14 @@ def after_request(response):
 # now only send the refference id to server => server interpret it and then store data server side
 # WHY? Because of a little bit of increased security + no sensitive information is transmitted in compared
 # to client side cookies.
-app.config["SESSION_FILE_DIR"] = mkdtemp()
+# app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
 # just use whatever from CS50, it just make sense
-db = SQL(os.getenv("postgres://xdmsqgpufqndoe:5a1254c174b8ad77edf22fd07a311816920c8be6ebec4141ec5e9ec576a63898@ec2-18-235-107-171.compute-1.amazonaws.com:5432/db73t4urbqrdke"))
+db = SQL("sqlite:///bored.db")
 
 @app.route("/")
 @login_required
