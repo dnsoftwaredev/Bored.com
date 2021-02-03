@@ -15,7 +15,7 @@ from flask.json import jsonify
 app = Flask(__name__)
 
 # track change in real time
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+# app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
 # Ensure responses aren't cached => this means that you will actually see the newest
@@ -249,7 +249,3 @@ def errorhandler(e):
 # Listen for errors, should be good UNDERSTOOD
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 3000))
-    app.run(port=port)
