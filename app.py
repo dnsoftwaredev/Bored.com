@@ -13,7 +13,8 @@ from flask.json import jsonify
 
 # Configure application, UNDERSTOOD
 app = Flask(__name__)
-
+port = int(os.environ.get('PORT', 5000))
+app.run(host='0.0.0.0', port=port)
 # Track the changes and show changes in real time for templates, UNDERSTOOD
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
