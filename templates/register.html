@@ -17,18 +17,4 @@
         </div>
         <button class="btn btn-primary" type="submit" if="submit">Register</button>
     </form>
-    <script> /* this script basically prevent the user to use a username that is already taken */
-        document.getElementById("myForm").addEventListener("submit", function(event){
-            event.preventDefault()
-            var username=document.getElementById('username').value;
-            $.get('/check?username=' + encodeURIComponent(username), function(data){
-                        if(data == false) {
-                            alert("Username taken.");
-                        }
-                        else {
-                            $('#myForm').submit();
-                        }
-            });
-        });
-    </script>
 {% endblock %}
