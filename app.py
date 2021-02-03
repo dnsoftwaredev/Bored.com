@@ -252,4 +252,4 @@ for code in default_exceptions:
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 3000))
-    app.run(host="https://enigmatic-garden-25363.herokuapp.com/", port=port)
+    app.run(host="public IP", port=port)
