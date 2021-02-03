@@ -252,4 +252,4 @@ for code in default_exceptions:
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 3000))
-    app.run(host="public IP", port=port)
+    app.run(port=port)
