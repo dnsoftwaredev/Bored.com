@@ -1,2 +1,1 @@
-web: $env:flask_app="app.py"
-web: flask run
+web: python app.py

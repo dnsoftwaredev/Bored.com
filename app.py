@@ -11,10 +11,10 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required, activity_nop, usd
 from flask.json import jsonify
 
-# Configure application, UNDERSTOOD
+# Configure application
 app = Flask(__name__)
 
-# Track the changes and show changes in real time for templates, UNDERSTOOD
+# track change in real time
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
@@ -250,3 +250,6 @@ def errorhandler(e):
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 3000))
+    app.run(host='localhost', port=port)
